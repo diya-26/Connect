@@ -1,0 +1,28 @@
+.signup{
+    color: black;
+    text-decoration: underline;
+    position: relative;
+    left: 760px;
+    font-size: 50px;
+}
+body{
+    overflow: hidden;
+}
+.names{
+    position: relative;
+    left: 600px;
+    font-size: larger;
+}
+.passs{
+    
+        position: relative;
+        left: 650px;
+        font-size: larger;   
+}
+
+.subs{
+    position: relative;
+    top: 100px;
+    left: 330px;
+    font-size: 24px;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/home.css">
+    <style>
+        /* Add CSS styles for adjusting image size */
+        .result-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .result-item img {
+            max-width: 100px; /* Adjust the max-width as needed */
+            max-height: 100px; /* Adjust the max-height as needed */
+            margin-right: 20px; /* Add some spacing between the image and details */
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Results</h2>
+    {{#if searchResults.length}}
+    <ul>
+        {{#each searchResults}}
+        <li class="result-item">
+            {{#if this.avatar}}
+            <img src="{{this.avatar}}" alt="Profile Photo">
+            {{/if}}
+            <div>
+                <h2>Name: {{this.name}}</h2>
+                <p>Age: {{this.age}}</p>
+                <p>School: {{this.school}}</p>
+                <p>Class:{{this.cls}}</p>
+                <p>University: {{uni}}</p>
+                <p>Other: {{this.other}}</p>
+                <form action="/home/add-comment/{{this._id}}" method="POST">
+                    <input type="text" name="commentText" placeholder="Add a comment..." required>
+                    <button type="submit">Add Comment</button>
+                </form>
+
+                    <!-- Display existing comments -->
+                    <h3>Comments:</h3>
+                    <ul>
+                        {{#each this.comments}}
+                        <li>{{this.text}}</li>
+                        {{/each}}
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No results found.</p>
+    {{/if}}
+</body>
+</html>

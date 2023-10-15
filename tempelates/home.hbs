@@ -1,0 +1,29 @@
+<body>
+    
+    <form action="/home/details" method="POST" enctype="multipart/form-data">
+    <link rel="stylesheet" href="/home.css">
+        <h2 class="help">Let's help you connect</h2>
+        <h2 class="details">Please Enter The Details Of The Person You Are Looking For</h2>
+        <div class="main">
+            <input type="text" name="name" class="Name" placeholder="Enter The Name" required>
+            <input type="text" name="age" class="Age" placeholder="Age Idea">
+            <input type="text" name="school" class="school" placeholder="School/other">
+            <input type="text" name="cls" class="cls" placeholder="Class">
+            <input type="text" name="uni" class="uni" placeholder="University">
+            <input type="text" name="other" class="other" placeholder="Any memory">
+            <label for="avatar"><h2 class="pic">Upload photo (if any):</h2></label>
+            <input type="file" id="avatar" name="avatar" accept="image/*" class="pics">
+            {{#if uploadedPhoto}}
+            <img src="{{uploadedPhoto}}" alt="Uploaded Photo">
+            {{/if}}
+            <input type="submit" value="Submit Details" class="submit">
+        </div>
+    </form>
+
+    <h2 class="search">Search for People</h2>
+    <form action="/search" method="GET">
+        <input type="text" name="name" placeholder="Enter Name" class="searchb">
+        <button type="submit" class="searchbb">Search</button>
+    </form>
+    <a href="/profile" class="profile">View Your Profile</a>
+</body>

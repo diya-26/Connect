@@ -1,0 +1,27 @@
+/* Default styles for larger screens */
+body {
+    overflow: hidden;
+}
+
+.login {
+    color: black;
+    text-decoration: underline;
+    position: relative;
+    left: 720px;
+    font-size: 50px;
+}
+
+.name, .pass, .acc, .new, .submit {
+    position: relative;
+    left: 600px;
+    font-size: larger;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .login, .name, .pass, .acc, .new, .submit {
+        position: static; /* Reset positioning for smaller screens */
+        left: 0; /* Reset left property for smaller screens */
+        font-size: 30px; /* Adjust font size for smaller screens */
+    }
+}

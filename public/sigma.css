@@ -1,0 +1,25 @@
+body{
+    background-color: wheat;
+}
+.details{
+    font-size: 30px;
+    position: relative;
+    left: 380px;
+    text-decoration: underline;
+    top: 20px;
+}
+h1 {
+    color: #333;
+}
+
+form {
+    margin: 20px auto;
+    padding: 20px;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+
+

@@ -1,0 +1,86 @@
+const express = require("express");
+const app = express();
+const path = require("path");
+const hbs = require("hbs");
+const collection = require("./mongodb");
+const multer = require('multer');
+const tempelatePath = path.join(__dirname, '../tempelates');
+
+app.use(express.static('css'));
+app.use(express.json());
+app.set("view engine", "hbs");
+app.set("views", tempelatePath);
+app.use(express.urlencoded({ extended: false }));
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads'); // Save uploaded files to the "public/uploads" directory
+    },
+    filename: (req, file, cb) => {
+        // Rename the file to ensure it's unique (you can use Date.now() or other strategies)
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const fileExtension = path.extname(file.originalname);
+        cb(null, uniqueSuffix + fileExtension);
+    }
+});
+
+const upload = multer({ storage: storage });
+
+app.get("/", (req, res) => {
+    res.render("login");
+});
+
+app.get("/signup", (req, res) => {
+    res.render("signup");
+});
+
+app.post("/signup", async (req, res) => {
+    const data = {
+        name: req.body.name,
+        password: req.body.password
+    };
+
+    await collection.insertMany([data]);
+
+    // Redirect to the "home" page in "basic" registration mode
+    res.redirect("/home?step=basic");
+});
+
+app.post("/login", async (req, res) => {
+    try {
+        const check = await collection.findOne({ name: req.body.name });
+
+        if (check.password === req.body.password) {
+            res.render("home");
+        } else {
+            res.send("wrong password");
+        }
+    }
+    catch{
+        res.send("wrong details")
+    }
+});
+
+app.post("/home/details", upload.single("avatar"), async (req, res) => {
+    // Assuming you have a user object with basic information stored in a session or database
+    const user = {
+        name: "User's Name" // Fetch the user's name from the session or database
+    };
+
+    // Update the user object with the uploaded avatar filename
+    user.avatar = req.file ? req.file.filename : null;
+    res.render("home", { user });
+});
+
+app.get("/home", (req, res) => {
+
+    const step = req.query.step || "basic";
+    res.render("home", { step });
+});
+app.get("/profile",(req,res)=>{
+    res.render("profile");
+})
+
+app.listen(3030, () => {
+    console.log("connected");
+});

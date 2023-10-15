@@ -1,0 +1,61 @@
+/* Default styles for larger screens */
+body {
+    overflow: hidden;
+    background-color: aqua;
+}
+
+.pro {
+    position: relative;
+    left: 640px;
+    top: 30px;
+    font-size: 40px;
+}
+
+.hi {
+    position: relative;
+    left: 580px;
+    top: 50px;
+    font-size: 50px;
+}
+
+.media {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    width: 230px;
+}
+
+.details {
+    position: relative;
+    top: 60px;
+    right: 160px;
+    width: 240px;
+}
+
+.age {
+    position: relative;
+    top: 97px;
+    right: 310px;
+    width: 190px;
+}
+
+.school {
+    position: relative;
+    top: 130px;
+    right: 410px;
+    width: 190px;
+}
+
+/* Media queries for mobile screens */
+@media (max-width: 768px) {
+    .pro, .hi, .media, .details, .age, .school {
+        position: static; /* Reset the position for mobile screens */
+        top: 0; /* Reset the top property for mobile screens */
+        left: 0; /* Reset the left property for mobile screens */
+        right: 0; /* Reset the right property for mobile screens */
+        width: auto; /* Reset the width property for mobile screens */
+        font-size: 30px; /* Adjust font size for mobile screens */
+    }
+}
+
+/* Add more media queries for different screen sizes if needed */

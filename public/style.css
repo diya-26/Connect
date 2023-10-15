@@ -1,0 +1,46 @@
+body{
+    background-color: aqua;
+}
+.helping{
+    position: relative;
+    color: black;
+    top: 20px;
+    left: 520px;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
+.signup{
+    color: black;
+    position: relative;
+    top: 30px;
+    left: 700px;
+}
+.names{
+    position: relative;
+    top: 70px;
+    left: 550px;
+    border: 10px;
+    width: 170px;
+    height:40px;
+    border-color: black;
+}
+.passs{
+    position: relative;
+    top: 70px;
+    left: 600px;
+    width: 170px;
+    height: 40px;
+    border: 10px;
+    border-color: black;
+}
+.submits{
+    position: relative;
+    top: 140px;
+    left: 350px;
+    width: 100px;
+}
+.new{
+    position: relative;
+    top: 160px;
+    left: 680px;
+}
