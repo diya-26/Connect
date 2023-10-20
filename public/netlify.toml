@@ -1,0 +1,3 @@
+[build]
+command = "npm run build"  # Adjust this to your build command
+publish = "public"  # The directory where your build assets will be stored
